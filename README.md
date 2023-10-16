@@ -37,3 +37,21 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 Название таблицы | Название первичного ключа
 customer         | customer_id
 ```
+
+### Решение:
+
+Чтобы получить список таблиц и их первичных ключей в MySQL:
+
+```
+SELECT 
+    TABLE_NAME AS 'Table', 
+    COLUMN_NAME AS 'Primary Key'
+FROM 
+    INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE 
+    TABLE_SCHEMA = 'your_database_name' AND 
+    CONSTRAINT_NAME = 'PRIMARY';
+```
+Этот запрос вернет два столбца: один с именами таблиц и другой с именами соответствующих первичных ключей.
+
+Пожалуйста, учтите, что INFORMATION_SCHEMA.KEY_COLUMN_USAGE - это системная таблица, которая содержит информацию о всех столбцах, которые участвуют в ограничениях.
