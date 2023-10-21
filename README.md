@@ -28,7 +28,10 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 
 1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
 
-*Результатом работы должны быть скриншоты обозначенных заданий, а также простыня со всеми запросами.*
+У меня не получилось востановить БД, я поставил другой контейнер, с установленой БД dvdrental:
+
+<img width="1599" alt="Снимок экрана 2023-10-21 в 16 58 34" src="https://github.com/otuzi/workwithDB/assets/61628386/297476aa-3271-4597-bf6c-b4d33b64b386">
+
 
 
 ### Задание 2
@@ -40,18 +43,5 @@ customer         | customer_id
 
 ### Решение:
 
-Чтобы получить список таблиц и их первичных ключей в MySQL:
+<img width="809" alt="Снимок экрана 2023-10-21 в 17 03 40" src="https://github.com/otuzi/workwithDB/assets/61628386/e15ea274-b594-4d7d-a00a-f5648d28e8d6">
 
-```
-SELECT 
-    TABLE_NAME AS 'Table', 
-    COLUMN_NAME AS 'Primary Key'
-FROM 
-    INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-WHERE 
-    TABLE_SCHEMA = 'your_database_name' AND 
-    CONSTRAINT_NAME = 'PRIMARY';
-```
-Этот запрос вернет два столбца: один с именами таблиц и другой с именами соответствующих первичных ключей.
-
-Пожалуйста, учтите, что INFORMATION_SCHEMA.KEY_COLUMN_USAGE - это системная таблица, которая содержит информацию о всех столбцах, которые участвуют в ограничениях.
